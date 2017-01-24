@@ -1,36 +1,25 @@
 #include <iostream>
-#include <string>
-#include <algorithm>
 #include <vector>
-using namespace std;
+#include <set>
+#include <algorithm>
 
+using namespace std;
 int main () {
+	set<char> a;
 	int n; cin >> n;
-	string s; cin >> s;
-	vector <char> p(25);
-	int ans = 0;
+	vector<char> s(n);
+	for (int i = 0; i < n; i++) {
+		cin >> s[i];
+	}
 
 	std::transform(s.begin(), s.end(), s.begin(), ::tolower);
-	cout << s << endl;
-	for (int i = 0; i < s.length(); i++) {
-		for (char e = 'a'; e <= 'z'; e++) {
-			for (int t = 0; i < p.size(); t++) {
-				if (p[t] == e) {
-					cout << p[t] << " already exist" << endl;
-					break;
-				}
-			}
-			if (s[i] == e) {
-				ans++;
-				p.push_back(e);
-			}
-		}
-	}
-	if (ans == 23) {
+
+	for (int i = 0; i < n; i++) {
+		a.insert(s[i]);
+	}	
+	if (a.size() >= 26) {
 		cout << "YES" << endl;
 	} else {
 		cout << "NO" << endl;
 	}
-	cout << ans << endl;
-	
 }
